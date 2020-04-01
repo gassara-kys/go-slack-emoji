@@ -1,0 +1,6 @@
+go-slack-emoji
+bin/
+env.sh
+images/*
+!images/.gitkeep
+!images/_mv.sh
