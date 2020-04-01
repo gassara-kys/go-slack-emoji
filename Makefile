@@ -6,7 +6,7 @@ all: run
 
 .PHONY: clean
 clean:
-	rm -rf bin/* && ls images/* | grep -v "_mv.sh" | xargs rm -f 
+	rm -rf bin/* images/*.png images/*.gif images/*.jpeg images/*.jpg
 
 .PHONY: fmt
 fmt: $(SRCS) 
@@ -32,3 +32,7 @@ run: build
 .PHONY: download
 download: build
 	source env.sh && bin/$(APPNAME) download -f
+
+.PHONY: upload
+upload: build
+	source env.sh && bin/$(APPNAME) upload

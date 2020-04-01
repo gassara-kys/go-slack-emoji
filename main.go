@@ -25,9 +25,8 @@ func main() {
 		},
 	}
 	app.Commands = cmdList
-	if err := app.Run(os.Args); err != nil {
-		log.Fatal(err)
-	}
+	err := app.Run(os.Args)
+	handleError(err)
 }
 
 type subCmd interface {
@@ -37,4 +36,10 @@ type subCmd interface {
 func action(c *cli.Context, sc subCmd) error {
 	g := c.GlobalString("token")
 	return sc.Run(c, g)
+}
+
+func handleError(err error) {
+	if err != nil {
+		log.Fatal(err)
+	}
 }
